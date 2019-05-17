@@ -1,0 +1,43 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container  {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../images/adult-bald-black-and-white-1194196.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* clock */
+
+.clock {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 10px solid white;
+    position: relative;
+    /* padding: 15px; */
+}
+
+.hand {
+    width: 50%;
+    height: 3px;
+    position: absolute;
+    top: 50%;
+    background-color: #ff0000;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+    transition: all 0.05s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
