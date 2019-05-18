@@ -1,0 +1,18 @@
+
+:root {
+    --base: #ffc600;
+    --spacing: 10px;
+    --blur: 0px;
+    --radius: 0px;
+}
+
+img {
+    padding: var(--spacing);
+    background: var(--base);
+    filter: blur(var(--blur));
+    border-radius: var(--radius)
+}
+
+.text {
+    color: var(--base)
+}
