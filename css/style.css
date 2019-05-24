@@ -1,0 +1,33 @@
+
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web&display=swap');
+
+.container {
+    width: 400px;
+    margin: 0 auto;
+    
+}
+
+.search {
+    width: 400px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid blue;
+    text-align: center;
+}
+
+ul {
+    width: 400px;
+    padding: 0;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+li {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid blue;
+}
+
+.about {
+    font-family: 'Titillium Web', sans-serif;
+}
