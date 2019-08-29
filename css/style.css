@@ -1,10 +1,9 @@
-
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web&display=swap');
 
 .container {
     width: 400px;
     margin: 0 auto;
-    
+
 }
 
 .search {
@@ -30,4 +29,9 @@ li {
 
 .about {
     font-family: 'Titillium Web', sans-serif;
+}
+
+
+.sun {
+    color: blue;
 }

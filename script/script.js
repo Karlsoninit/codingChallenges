@@ -1,75 +1,94 @@
-const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+const endpoint =
+  "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
+
+const cities = [];
+
+fetch(endpoint)
+  .then(response => response.json())
+  .then(data => cities.push(...data));
+
+function findToMatch(word, cities) {
+  return cities.filter(place => {
+    const regex = new RegExp(word, "gi");
+    return place.city.match(regex) || place.state.match(regex);
+  });
+}
+
+function displayMatches() {
+  const matchArray = findToMatch(this.value, cities);
+  console.log(matchArray);
+  const html = matchArray
+    .map(el => {
+      const regex = new RegExp(this.value, "gi");
+      const cityName = el.city.replace(
+        regex,
+        `<span class="sun">${this.value}</span>`
+      );
+      return `<li>
+        <span class='name'>${cityName}, ${el.state}</span>
+        <span class='population'>${el.population}</span>
+        </li>`;
+    })
+    .join("");
+  about.innerHTML = html;
+}
+
+const searchForm = document.querySelector(".search");
+const about = document.querySelector(".about");
+
+searchForm.addEventListener("change", displayMatches);
+searchForm.addEventListener("keyup", displayMatches);
 
 // const cities = [];
 
 // fetch(endpoint)
-//     .then(response => response.json())
-//     .then(data => cities.push(...data))
+//   .then(response => response.json())
+//   .then(data => cities.push(...data));
 
-
-// function findToMatch(word, cities) {
-//     return cities.filter(place => {
-//         const regex = new RegExp(word, 'gi');
-//         return place.city.match(regex) || place.state.match(regex)
-//     })
+// function find(word, city) {
+//   return city.filter(el => {
+//     const regex = new RegExp(word, "gi");
+//     return el.city.match(regex) || el.state.match(regex);
+//   });
 // }
 
+// const about = document.querySelector(".about");
 
-// function displayMatches() {
-//     const matchArray = findToMatch(this.value, cities);
-//     console.log(matchArray)
-//     const html = matchArray.map(el => {
-//         return `<li>
-//         <span class='name'>${el.city}, ${el.state}</span>
-//         <span class='population'>${el.population}</span>
-//         </li>`
-//     }).join()
-//     about.innerHTML = html;
+// function draw() {
+//   console.log(this.value);
+//   const DrawInnerHtml = find(this.value, cities);
+//   console.log(DrawInnerHtml);
+//   DrawInnerHtml.map(el => {
+//     return (about.innerHTML = `<li>${el.city} ${el.state} ${el.latitude}</li>`);
+//   });
 // }
 
+// const search = document.querySelector(".search");
 
-// const searchForm = document.querySelector('.search');
-// const about = document.querySelector('.about');
+// search.addEventListener("change", draw);
+// search.addEventListener("keyup", draw);
 
+//after month
 
-// searchForm.addEventListener('change', displayMatches);
-// searchForm.addEventListener('keyup', displayMatches)
+// const city = [];
+// const info = document.querySelector(".info");
+// const text = document.querySelector(".text");
 
+// fetch(endpoint)
+//   .then(response => response.json())
+//   .then(data => city.push(...data));
 
-const cities = []
+// const findCities = (wordFind, cities) => {
+//   return cities.filter(place => {
+//     const regexp = new RegExp(wordFind, "gi");
+//     return place.city.match(regexp) || place.state.match(regexp);
+//   });
+// };
 
-fetch(endpoint)
-    .then(response => response.json())
-    .then(data => cities.push(...data))
+// const displayMatches = function() {
+//   const matchArr = findCities(this.value, city);
+//   text.innerHTML = matchArr.map(elem => `<li>${elem.city}</li>`).join("");
+// };
 
-
-
-
-function find(word, city) {
-    return city.filter( el => {
-        const regex =  new RegExp(word, 'gi')
-        return el.city.match(regex) || el.state.match(regex)
-    })
-}
-
-const about = document.querySelector('.about')
-
-function draw() {
-    console.log(this.value)
-    const DrawInnerHtml = find(this.value, cities)
-    console.log(DrawInnerHtml)
-    DrawInnerHtml.map(el => {
-        
-        return about.innerHTML =
-        `<li>${el.city} ${el.state} ${el.latitude}</li>`
-    })
-}
-
-
-const search = document.querySelector('.search');
-
-
-search.addEventListener('change' , draw);
-search.addEventListener('keyup' , draw);
-
-
+// info.addEventListener("change", displayMatches);
+// info.addEventListener("keyup", displayMatches);
